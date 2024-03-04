@@ -1,0 +1,65 @@
+// See https://aka.ms/new-console-template for more information
+using System.Text;
+
+string name="Tran Ngo Phat Dat ";
+string key="006";
+System.Console.WriteLine("Stage 1: Name & Key");
+System.Console.WriteLine("Name: "+name);
+System.Console.WriteLine("Key: "+key);
+System.Console.WriteLine();
+int length=name.Length;
+int pos=0;
+// for (int i=1;i<=6;i++)
+// {
+//     string str=name.Substring(pos,3);
+//     System.Console.Write(str+" ");
+//     pos=pos+3;
+
+//     byte[] bytes = System.Text.Encoding.ASCII.GetBytes(str);
+//     foreach (byte b in bytes)
+//     {
+//         //System.Console.Write(Convert.ToString(b, 2).PadLeft(8, '0'));
+//         string binary=Convert.ToString(b, 2).PadLeft(8, '0');
+//         System.Console.Write(binary);
+//         System.Console.Write(" ");
+//     }
+
+//     //byte encrypt= (byte) (msg^key);
+//     System.Console.WriteLine();
+// }
+System.Console.WriteLine("Stage 2: Encrypt");
+string encrypt="";
+for (int i=1;i<=6;i++)
+{
+    string str=name.Substring(pos,3);
+    //System.Console.Write(str+" ");
+    pos=pos+3;
+    //System.Console.WriteLine("Answer:"+EncryptOrDecrypt(str,key));
+    encrypt=encrypt+EncryptOrDecrypt(str,key);
+}
+System.Console.WriteLine(name+"^"+key+" -> "+encrypt);
+System.Console.WriteLine();
+
+System.Console.WriteLine("Stage 3: Decrypt");
+string decrypt="";
+pos=0;
+for (int i=1;i<=6;i++)
+{
+    string str1=encrypt.Substring(pos,3);
+    //System.Console.Write(str1+" ");
+    pos=pos+3;
+    //System.Console.WriteLine("Answer:"+EncryptOrDecrypt(str1,key));
+    decrypt=decrypt+EncryptOrDecrypt(str1,key);
+}
+System.Console.WriteLine(encrypt+"^"+key+" -> "+decrypt);
+System.Console.WriteLine("End");
+
+
+// Hàm Encrypt & Decrypt
+string EncryptOrDecrypt(string text, string key)
+{
+    var result = new StringBuilder();
+    for (int c = 0; c < text.Length; c++)
+        result.Append((char)((uint)text[c] ^ (uint)key[c % key.Length]));
+    return result.ToString();
+}
