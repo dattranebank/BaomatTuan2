@@ -1,0 +1,13 @@
+// Week 3
+// Convert uint to byte using BitConverter.GetBytes
+uint a=18675;
+byte[] b=BitConverter.GetBytes(a);
+System.Console.WriteLine(string.Join(",",b));
+
+// Another exercise
+byte[] c={1,8,6,5};
+byte[] d={6,4,1,2};
+byte[] e=new byte[8];
+Array.Copy(c,0,e,0,c.Length);
+Array.Copy(d,0,e,0,d.Length);
+System.Console.WriteLine(string.Join(",",c));
