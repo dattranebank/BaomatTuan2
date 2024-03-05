@@ -1,0 +1,25 @@
+// byte[] arr={7,9,11,17};
+
+// uint a= (uint) arr[0] | ( (uint) arr[1]<<8 | (uint) arr[2]<<16 | (uint) arr[3]<<24) ;
+// System.Console.WriteLine(a);
+// System.Console.WriteLine(a.ToString("b"));
+
+
+// Bài tập: 8 bit thành uint
+byte[] arr={7,9,11,17,3,6,8,19};
+uint[] arr1=new uint[arr.Length/4];
+int cnt=0;
+for (int i=0;i<arr1.Length;i++)
+{
+    //uint a= (uint) arr[0+cnt] | ( (uint) arr[1+cnt]<<8 | (uint) arr[2+cnt]<<16 | (uint) arr[3+cnt]<<24);
+    uint a= (uint) arr[cnt++] | ( (uint) arr[cnt++]<<8 | (uint) arr[cnt++]<<16 | (uint) arr[cnt++]<<24);
+    arr1[i]=a;
+    //cnt=cnt+4;
+}
+
+System.Console.WriteLine("Answer:");
+for (int i=0;i<arr1.Length;i++)
+{
+    System.Console.WriteLine(arr1[i]+" ");
+}
+System.Console.WriteLine(string.Join(",",arr1));
